@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: linear-gradient(to right, blue, purple);
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .player {
+        background-color: rgba(241, 40, 231, 0.808);
+        width: 23rem;
+        min-height: 5rem;
+        padding: 1rem;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.5rem;
+      }
+      .nav i {
+        background-color: rgb(211, 137, 150);
+        border-radius: 50%;
+        padding: 0.3rem;
+        box-shadow: 1px 5px 19px black;
+      }
+      .imag {
+        margin-top: 3rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .imag img {
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+        margin-right: 0.6rem;
+        box-shadow: 0 0 90px rgb(16, 228, 147);
+        border: 6px solid rgb(14, 226, 208);
+        margin-bottom: 4rem;
+    }
+    img.rotate{
+         animation: ani 44s ease-in-out infinite 0s;
+
+     }
+      @keyframes ani {
+        0%{
+            transform: rotate(0deg);
+            box-shadow: 0 0 90px rgb(16, 228, 147);
+border-color: aqua;
+        }
+        20%{
+            box-shadow: 0 0 90px rgb(111, 40, 218);
+            border-color: rgb(201, 189, 28);
+
+        }
+        35%{
+            box-shadow: 0 0 90px rgb(228, 16, 16);
+            border-color: rgba(248, 102, 102, 0.767);
+
+        }
+        50%{
+            box-shadow: 0 0 90px rgb(4, 248, 77);
+            border-color: rgba(70, 197, 70, 0.678);
+
+        }
+        70%{
+            box-shadow: 0 0 90px rgb(231, 8, 8);
+            border-color: rgba(242, 21, 250, 0.836)
+        }
+        85%{
+            box-shadow: 0 0 90px rgb(241, 162, 14);
+            border-color:orange;
+
+        }
+        100%{
+            transform: rotate(360deg);
+            box-shadow: 0 0 67px yellow;
+            border-color: rgb(255, 0, 179);
+        }
+   
+      }
+      #progress {
+        margin-top: 1rem;
+        -webkit-appearance: none;
+        width: 80%;
+        height: 0.3rem;
+        background-color: rgb(206, 9, 49);
+        border-radius: 0.3rem;
+      }
+      #progress::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 25px;
+        height: 25px;
+        background-color: palevioletred;
+        border-radius: 50%;
+        border: 5px solid white;
+      }
+      .btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 4rem;
+        margin-top: 2rem;
+      }
+      .btn i {
+        background-color: palevioletred;
+        margin: 1rem;
+        font-size: 2rem;
+        border-radius: 50%;
+        color: white;
+        padding: 0.4rem;
+        box-shadow: 1px 5px 19px black;
+      }
+      #play {
+        transform: scale(1.5);
+      }
+      h2 {
+        margin-top: 0.4rem;
+        font-weight: 300;
+        margin-bottom: 0.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="player">
+        <div class="nav">
+          <i class="bx bx-arrow-back"></i>
+          <i class="bx bx-menu"></i>
+        </div>
+
+        <div class="imag">
+          <img src="download (1).jfif" alt="" srcset="" />
+          <h2>Despacito</h2>
+          <p>Luis Fonsi Ft. Puerto Rican</p>
+          <!-- <audio id="song">
+            <source src="ty.mp4"/>
+          </audio> -->
+          <input type="range" id="progress" value="0" />
+          <div class="btn">
+            <i id="back" class="bx bxs-chevrons-left"></i>
+            <i id="play" class="bx bx-play" ></i>
+            <i id="next" class="bx bxs-chevrons-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+ let audio=document.createElement('audio')
+    // audio.setAttribute('controls',true)
+    audio.src="ty.mp4"
+  document.querySelector('body').before(audio)
+audio.classList.add('song')
+    
+
+    let song = document.querySelector(".song");
+    let progress = document.querySelector("#progress");
+    let play = document.querySelector("#play");
+    let imag = document.querySelector("img");
+
+
+    song.onloadedmetadata = function () {
+      progress.max = song.duration;
+      progress.value = song.currentTime;
+    };
+
+
+    play.addEventListener("click", (e) => {
+      if (play.classList.contains("bx-play")) {
+        song.play();
+        play.classList.add("bx-pause");
+        play.classList.remove("bx-play");
+        imag.classList.add('rotate')
+
+      } else {
+        song.pause();
+        play.classList.remove("bx-pause");
+        play.classList.add("bx-play");
+        imag.classList.remove('rotate')
+
+      }
+    });
+
+    progress.onchange = function () {
+      song.currentTime = progress.value;
+      song.play();
+      play.classList.remove("bx-play");
+      play.classList.add("bx-pause");
+    }; 
+
+      setInterval(() => {
+        progress.value = song.currentTime;
+      }, 500);
+
+
+      let h2=document.querySelector('h2')
+      let p=document.querySelector('p')
+
+      let nextbtn=document.querySelector('#next')
+    nextbtn.addEventListener('click',e=>{
+    audio.src="ty1.mp4"
+    h2.innerText="Rock Song"
+p.innerText="Mumbai ka ,Name Rakh Dia"
+
+    })
+      let backbtn=document.querySelector('#back')
+    backbtn.addEventListener('click',e=>{
+    audio.src="ty.mp4"
+h2.innerText="Despacit"
+p.innerText="Luis Fonsi Ft. Puerto Rican"
+    })
+  </script>
+</html>

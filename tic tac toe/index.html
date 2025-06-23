@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <p id="owner">HAMMAD</p>
+    <div class="msg-container hide">
+        <p id="msg">Congratulation, winner is O</p>
+ 
+ 
+</div>
+<main>
+    <h1>Tic Tac Toe</h1>
+
+    <div class="container">
+    <div class="game">
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+
+    </div>
+</div>
+ </main>
+ <button1 class="new">New Game</button1>
+<script>
+
+let buttons=document.querySelectorAll("button")
+let msg=document.querySelector(".msg-container")
+let newbtn=document.querySelector(".new")
+let boxes=document.querySelectorAll(".box")
+let turn=true;
+
+let winpatter=[
+[0, 3, 6],
+    [0, 4, 8],
+    [1, 4, 7],
+    [2, 5, 8],
+    [2, 4, 6],
+    [3, 4, 5],
+    [6, 7, 8]
+]
+
+newbtn.addEventListener('click',()=>{
+    msg.classList.add("hide")
+  turn=true
+boxes.forEach(box=>{
+    box.disabled=false;
+    box.innerHTML=""
+})
+})
+
+
+function checkwinner(){
+    for(let patter of winpatter){
+     let val1=buttons[patter[0]].innerHTML;
+     let val2=buttons[patter[1]].innerHTML;
+     let val3=buttons[patter[2]].innerHTML;
+     if(val1 !=="" && val2!=="" &&val3!==""){
+        if(val1===val2 && val1===val3 && val2===val3){
+            console.log("win");
+            boxes.forEach(box=>{
+            box.disabled=true
+        })
+        msg.classList.remove("hide")
+        msg.innerHTML=`Congratulation winner is ${val1}`
+        }
+        
+     }
+     
+     
+}
+}
+
+
+
+
+buttons.forEach(button=>{
+    button.addEventListener('click',n=>{
+        if(turn==true){
+            n.target.innerHTML="X"
+     turn=false
+        }
+        else if(turn==false){
+            n.target.innerHTML="0"
+     turn=true
+
+        }
+        button.disabled=true
+        checkwinner();
+    })
+    
+})
+
+
+
+
+</script>
+</body>
+</html>

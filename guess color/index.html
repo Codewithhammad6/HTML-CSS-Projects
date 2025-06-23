@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        list-style-type: none;
+      }
+      li {
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 1rem;
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box1">
+      </div>
+      <div class="box2">
+        <p>score: <span>3</span></p>
+      </div>
+      <div class="box3">
+        <ul>
+          
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    let score=0;
+    document.querySelector('.box2 span').innerHTML=score
+    let randum = (min, max) => {
+      return Math.floor(Math.random() * (max - min));
+    };
+    randum(0, 255);
+    // console.log(randum(0,255));
+
+    let colorgenerat = () => {
+      let red = randum(0, 255);
+      let green = randum(0, 255);
+      let blue = randum(0, 255);
+
+      let color = `rgb(${red}, ${green}, ${blue})`;
+      return color;
+    };
+    colorgenerat();
+    // console.log(colorgenerat())
+
+    let startgame=()=>{
+        document.querySelector('ul').innerHTML=null
+        let colorr=colorgenerat()
+   document.querySelector('.box1').innerHTML=colorr
+
+    
+for (let i = 0; i < 5; i++) {
+    let li=document.createElement('li')
+    let ans=randum(1,5)
+    li.style.backgroundColor=i===ans?colorr:colorgenerat()
+    document.querySelector('ul').appendChild(li)
+    li.addEventListener('click',e=>{
+        if(e.target.style.backgroundColor===colorr){
+           score++;
+    document.querySelector('.box2 span').innerHTML=`${score}`
+        }
+        else{
+            score=0;
+    document.querySelector('.box2 span').innerHTML=`${score}`
+        }
+        startgame()
+        
+    })
+}
+}
+    startgame()
+
+
+
+window.addEventListener('load',startgame())
+  </script>
+</html>

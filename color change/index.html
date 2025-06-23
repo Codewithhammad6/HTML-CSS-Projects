@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button{
+            width: 6rem;
+            height: 6rem;
+            margin: 1rem;
+            border-radius: 1rem;
+            border: 2px solid black;
+        }
+#yellow{
+    background-color: yellow;
+}
+#blue{
+    background-color: blue;
+}
+#green{
+    background-color: green;
+}
+#pink{
+    background-color: pink;
+}
+    </style>
+</head>
+<body>
+    <div class="button" id="yellow"></div>
+    <div class="button" id="blue"></div>
+    <div class="button" id="green"></div>
+    <div class="button" id="pink"></div>
+</body>
+<script>
+
+    let btn=document.querySelectorAll('.button')
+    btn.forEach(n=>{
+        n.addEventListener('click',el=>{
+            document.body.style.background=`${el.target.id}`
+        })
+    })
+</script>
+</html>

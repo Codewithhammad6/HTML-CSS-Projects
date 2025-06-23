@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+        }
+        .box{
+            width: 18rem;
+            height: 30rem;
+            background-color: rgba(11, 17, 17, 0.993);
+            padding-top: 2rem;
+            border-radius: 1rem;
+            border: 2px solid rgb(97, 95, 95);
+        }
+        input{
+            width: 100%;
+            padding: .4rem 0 .4rem .3rem;
+            font-size: 2rem;
+            border: none;
+            outline: none;
+            border-radius: .5rem;
+            background-color: rgba(145, 132, 132, 0.123);
+            margin-bottom: 1rem;
+            color: white;
+        }
+ button{
+    background-color: #000;
+    color: white;
+    border-radius: 50%;
+    padding: 1rem;
+    margin: .7rem; 
+    border: none;
+    transition: .3s;
+ }
+ button:hover{ 
+    background-color: #0d2b3a;
+ }
+ #sp{
+    padding-left: .6rem;
+    padding-right: .6rem;
+ }
+ #sp1{
+    padding-left: .8rem;
+    padding-right: .8rem;
+    color: rgb(214, 211, 15);
+    font-weight: 800;
+ }
+ #sp2{
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+ }
+ .spp{
+   margin-left: .3rem;
+ }
+ .spp1{
+   margin-left: .7rem;
+ }
+ #sp3{
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+ }
+ .spp1 button{
+   font-size: 1rem;
+ }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <input type="text">
+            <div class="spp">
+                <button id="sp1">AC</button>
+                <button id="sp">DEL</button>
+                <button>%</button>
+                <button id="sp2">/</button>
+            </div>
+            <div class="spp1">
+                <button>9</button>
+                <button>8</button>
+                <button>7</button>
+                <button>+</button>
+            </div>
+            <div class="spp1">
+                <button>6</button>
+                <button>5</button>
+                <button>4</button>
+                <button id="sp3">-</button>
+            </div>
+            <div class="spp1">
+                <button>3</button>
+                <button>2</button>
+                <button>1</button>
+                <button>*</button>
+            </div>
+            <div class="spp1">
+                <button>H</button>
+                <button>0</button>
+                <button>.</button>
+                <button>=</button>
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+<script>
+    let string=""
+    let btn=document.querySelectorAll('button')
+    btn.forEach(button=>{
+        button.addEventListener('click',n=>{
+            if(n.target.innerText==='='){
+                let input=document.querySelector('input')
+                string=eval(string)
+                input.value=string
+            }
+    else if(n.target.innerText==='AC' || n.target.innerText==='DEL'){
+        let input=document.querySelector('input')
+        string=""
+            input.value=string
+    }
+    else if(n.target.innerText==='H'){
+        let input=document.querySelector('input')
+        string="Hammad CH"
+        input.value=string
+    }
+    
+    else{
+         let input=document.querySelector('input')
+         string=string+n.target.innerText
+            input.value=string
+    }
+
+    })
+    
+})
+
+</script>
+</html>

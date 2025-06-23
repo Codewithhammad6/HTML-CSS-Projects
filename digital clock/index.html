@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            align-items:center;
+            justify-content: center;
+        }
+        .box{
+            width: 20rem;
+            height: 20rem;
+            background-color: rgba(48, 55, 59, 0.356);
+            padding: 2rem;
+            border-radius: 1.9rem;
+            text-align: center;
+            border-radius: 1rem;
+            box-shadow: 0 0 15px blue;
+        }
+        .date{
+            font-size: 2rem;
+            border-radius: 1rem;
+           background: transparent;
+           color: white;
+            background: linear-gradient(to right ,rgba(255, 0, 0, 0.397),rgba(0, 0, 255, 0.466));
+        }
+        .time{
+            margin-top: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            gap: 1.7rem;
+        }
+        .hour{
+            background-color: black;
+            padding: 1.4rem;
+            font-size: 1.4rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 15px blue;
+        }
+        .min{
+            background-color: black;
+            padding: 1.4rem;
+            font-size: 1.4rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 15px blue;
+        }
+        .sec{
+            background-color: black;
+            padding: 1.4rem;
+            font-size: 1.4rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 15px blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+<div class="date">
+</div>
+<div class="time">
+<div class="hour">
+
+</div>
+<div class="min">
+
+</div>
+<div class="sec">
+
+</div>
+</div>
+</div>
+ </div>
+</body>
+<script>
+    let array=["January","Feburary","March","April","May","June","July","August","September","Octoper","November","December"]
+    let date=document.querySelector('.date')
+ const updation=function(){
+
+    let day=new Date().getDate()
+    let month=new Date().getMonth()
+    let year=new Date().getFullYear()
+    date.innerHTML=`${day} ${array[month]} ${year}`
+
+    let ghanta=document.querySelector('.hour')
+    let minut=document.querySelector('.min')
+    let second=document.querySelector('.sec')
+    
+let hour=new Date().getHours()
+ghanta.innerHTML=`${hour}`
+let min=new Date().getMinutes()
+minut.innerHTML=`${min}`
+let sec=new Date().getSeconds()
+second.innerHTML=`${sec}`
+}
+updation()
+setInterval(updation,1000);
+</script>
+</html>

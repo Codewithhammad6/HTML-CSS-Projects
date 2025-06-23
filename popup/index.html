@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+margin: 0;
+padding: 0;
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+            background-color: darkcyan;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #btn{
+            padding: .5rem .9rem;
+            border-radius: 1rem;
+            border: none;
+            font-size: large;
+            font-weight: 500;
+        }
+        .popup{
+            position: absolute;
+            background-color: antiquewhite;
+            width: 16rem;
+            padding: 0 25px;
+            text-align: center;
+            border-radius: .5rem;
+            top: 0%;
+            left: 50%;
+            transform:translate(-50%,-50%) scale(.1);
+            visibility: hidden;
+            transition: .3s;
+        }
+        .visable{
+            transform:translate(-50%,-50%) scale(1);
+            top:50%;
+            visibility: visible;
+        }
+        .popup img{
+            width: 6rem;
+            margin-top: -2.9rem;
+            margin-bottom: 2rem;
+        }
+        .popup h2{
+            margin-bottom: 1rem;
+            font-size: xx-large;
+        }
+        .popup button{
+            width: 80%;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            height: 2rem;
+            background-color: rgb(48, 182, 48);
+            border: none;
+            border-radius: .5rem;
+            font-size: 1.3rem;
+            color: white;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+<button type="submit" id="btn" onclick="showpop()">Submit</button>
+
+<div class="popup">
+    <img src="404-tick.png" alt="" srcset="">
+    <h2>Thank You</h2>
+    <p>Congratulation, Your details has been submited successfully. </p>
+<button onclick="hide()">OK</button>
+</div>
+
+</div>
+<script>
+let popup=document.querySelector('.popup')
+    function showpop(){
+popup.classList.add('visable')
+    }
+    
+    function hide(){
+popup.classList.remove('visable')
+    }
+
+</script>
+</body>
+</html>

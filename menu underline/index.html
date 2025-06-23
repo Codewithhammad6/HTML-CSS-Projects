@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            display: flex;
+            gap: 102px;
+            list-style-type: none;
+        }
+        li{
+            background-color: aqua;
+            position: relative;
+        }
+        li::after{
+            content: '';
+            left: 0;
+            width: 10%;
+            height: 2px;
+            bottom: -1px;
+            background-color: blue;
+            position: absolute;
+            transition: 0.8s;
+        }
+        li:hover::after{
+            width: 100%;
+
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>Blog</li>
+            <li>services</li>
+            <li>contact</li>
+            <li>login</li>
+        </ul>
+    </div>
+    
+</body>
+</html>
